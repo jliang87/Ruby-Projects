@@ -53,8 +53,7 @@ prices = Prices.new(*price_list)
 #cm = ChangeMaker.new(1, 5, 10, 25)
 class ChangeMaker
 	def initialize(*coins)
-		raise "ChangeMaker must have a c
-		oin of denomination 1" unless coins.include? 1
+		raise "ChangeMaker must have a coin of denomination 1" unless coins.include? 1
 		@coins = coins.sort
 		@cache = {}
 	end
@@ -150,13 +149,18 @@ class Customer
 	end
 end
 
-#simulation
-c = Customer.us 1,1,5,10,25,25,25
-puts c.coins.inspect
-p = prices.get
-puts p
-c.pay! p
-puts c.coins.inspect
+# #simulation
+# c = Customer.us 1,1,5,10,25,25,25
+# puts c.coins.inspect
+# p = prices.get
+# puts p
+# c.pay! p
+# puts c.coins.inspect
+
+
+
+
+
 
 
 
