@@ -228,12 +228,12 @@ class Runner < MiniTest::Unit::TestCase
 		  	assert_equal g.getDistance("AED"), "NO SUCH ROUTE"
 
         # The number of trips starting at C and ending at C with a maximum 
-        # of 3 stops (or a maximum of 4 nodes) 
+        # of 4 nodes
 		  	assert_equal g.DFS_max("CC", 4, [], []).size, 2 
 		  	assert_equal g.DFS_max("CC", 4, [], []).sort, ["CDC", "CEBC"].sort
 
-        # The number of trips starting at A and ending at C with exactly 4 
-        # stops (or exactly 5 nodes)
+        # The number of trips starting at A and ending at C with exactly 5 
+        # nodes
 		  	assert_equal g.DFS("AC", 5, [], []).size, 3
 		  	assert_equal g.DFS("AC", 5, [], []).sort, ["ABCDC", "ADCDC", "ADEBC"].sort
 
@@ -242,7 +242,7 @@ class Runner < MiniTest::Unit::TestCase
 		  	assert_equal g.Dijkstra("BB"), 9
 
         # The number of different routes from C to C with a distance of 
-        # less than 30 (or a maximum distance of 29)
+        # less than 30 
 		  	assert_equal g.DFS_Weighted_max("CC", 29, [], []).size, 7
   	    assert_equal g.DFS_Weighted_max("CC", 29, [], []).sort, ["CDC", "CEBC", "CEBCDC", "CDCEBC", "CDEBC", "CEBCEBC", "CEBCEBCEBC"].sort
 		  end
