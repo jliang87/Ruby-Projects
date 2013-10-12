@@ -149,42 +149,10 @@ class Customer
 	end
 end
 
-# #simulation
-# c = Customer.us 1,1,5,10,25,25,25
-# puts c.coins.inspect
-# p = prices.get
-# puts p
-# c.pay! p
-# puts c.coins.inspect
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#simulation
+c = Customer.us 1,1,5,10,25,25,25
+puts c.coins.inspect
+p = prices.get
+puts p
+c.pay! p
+puts c.coins.inspect
