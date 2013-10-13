@@ -33,42 +33,56 @@ end
 
 # find_ngram("aaaab a0a baaab c", 3)
 
-def findsum (arr, sum)
+# def findsum (arr, sum)
 	
-	less = []
-	result = []
+# 	less = []
+# 	result = []
 
-	for i in 0..arr.length-1
-		if arr[i] <= sum
-			less.push arr[i]
-		end
-	end
-	less = less.sort
-	puts less
+# 	for i in 0..arr.length-1
+# 		if arr[i] <= sum
+# 			less.push arr[i]
+# 		end
+# 	end
+# 	less = less.sort
+# 	# puts less
 
-	i = 0
-	j = less.length - 1 
+# 	i = 0
+# 	j = less.length - 1 
 
-	while (i < j)
-		if less[i] + less[j] < sum
-			i+=1 # no ++ in ruby!!!
-		elsif less[i] + less[j] > sum
-			j-=1
-		elsif less[i] + less[j] == sum
-			result.push less[i]
-			result.push less[j]
-			puts result
-			return
-		end
-	end
+# 	while (i < j)
+# 		if less[i] + less[j] < sum
+# 			i+=1 # no ++ in ruby!!!
+# 		elsif less[i] + less[j] > sum
+# 			j-=1
+# 		elsif less[i] + less[j] == sum
+# 			result.push less[i]
+# 			result.push less[j]
+# 			# puts result
+# 			return
+# 		end
+# 	end
 
-	puts "crankie"
+# 	result
+# end
+
+def findSum(array)
+  h = {}
+  result = []
+  array.each do |n|
+    i = 10 - n
+    if h.key? i
+      result.push [n,i]
+    else
+      h[n] = i
+    end
+  end
+  result
 end
 
 a = [2, 213, 2, 123, 123, 34, 34, 5, 32, 10 ,3, 123, 3, 3,5, 324, 12, 7 ,3, 8]
 
-#findsum(a, 10)
-
+# p findsum(a, 10)
+p findSum(a)
  # find_ngram("aaaab a0a baaab c", 3)
  # find_ngram("biu biu zii zii hai hai hai zii", 3)
 
@@ -92,7 +106,7 @@ def is_palindrome? (sentence)
 	return (safe_sentence = safe_sentence.reverse)
 end
 
-fuck = [2, 213, 90]
+a = [2, 213, 90]
 
 def average(array)
   raise ArgumentError.new('expected array') unless array.is_a?(Array)
@@ -190,6 +204,18 @@ def stringpermutation(str1, str2)
   end
 
 end
+
+def isSubString?(str, substr)
+  r = Regexp.new "#{substr}"
+  if str =~ r
+    true
+  else
+    false
+  end
+end
+
+# p isSubString? "good boy", "good"
+
 
 
 
