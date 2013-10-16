@@ -82,7 +82,7 @@ end
 a = [2, 213, 2, 123, 123, 34, 34, 5, 32, 10 ,3, 123, 3, 3,5, 324, 12, 7 ,3, 8]
 
 # p findsum(a, 10)
-p findSum(a)
+# p findSum(a)
  # find_ngram("aaaab a0a baaab c", 3)
  # find_ngram("biu biu zii zii hai hai hai zii", 3)
 
@@ -215,7 +215,38 @@ def isSubString?(str, substr)
 end
 
 # p isSubString? "good boy", "good"
+module Try
+  def self.included(base)
+    base.instance_eval do
+      def crazy
+        p "wow" 
+      end
+    end
+  end
+end
 
+class Calculator
 
+  include Try
 
+  class << self
+    def evaluate(&script)
+      self.new.instance_eval(&script)
+    end
+  end
 
+  def multiply(arg)
+    eval arg
+  end
+
+  def two(arg=nil)
+    "2#{arg}"
+  end
+
+  def times(arg)
+    " * #{arg}"
+  end
+end
+
+p Calculator.evaluate { multiply two times two }
+Calculator.crazy

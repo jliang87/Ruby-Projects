@@ -3,7 +3,9 @@ module Enumerable
 
 	def min_by
 		pairs = map{|x| [yield(x), x]} #http://stackoverflow.com/questions/14517046/what-do-the-square-brackets-mean-here
+		p pairs
 		min_pair = pairs.min {|a,b| a.first <=> b.first} # http://stackoverflow.com/questions/827649/what-is-the-ruby-spaceship-operator
+		puts min_pair.last.to_s
 		min_pair.last
 		#http://en.wikipedia.org/wiki/Schwartzian_transform
 	end
@@ -65,11 +67,15 @@ class ChangeMaker
 		return [] if amount == 0
 
 		possible = @coins.find_all {|coin| coin <= amount}
-		best = possible.min_by{|coin| change(amount-coin).size}
+		best = possible.min_by{|coin| change(amount-coin).size} #it's by .size!!! magic is here
 
 		@cache[amount] = [best, *change(amount-best)].sort
 	end
 end
+
+c = ChangeMaker.new 10,7,1
+p c.change 14
+
 
 #customer = Customer.new([1, 5, 10, 25], 1, 1, 1, 5, 25)
 class Customer
@@ -149,10 +155,10 @@ class Customer
 	end
 end
 
-#simulation
-c = Customer.us 1,1,5,10,25,25,25
-puts c.coins.inspect
-p = prices.get
-puts p
-c.pay! p
-puts c.coins.inspect
+# #simulation
+# c = Customer.us 1,1,5,10,25,25,25
+# puts c.coins.inspect
+# p = prices.get
+# puts p
+# c.pay! p
+# puts c.coins.inspect
