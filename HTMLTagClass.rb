@@ -62,7 +62,7 @@ class HTML
 			end
 
 			if (m =~ /<\w+\/>/ or o.sub(/\//, '') == m) and !tags_names[m].parent.nil? #For cases such as ie. <li/><li/> or ie. <div></div> or ie. <div><div>
-				if o =~ /<\/\w+>/ and !duplicate_stack.empty? and duplicate_stack.first.name == m #For cases specifically to ie. <div></div> and have duplicates
+				if o =~ /<\/\w+>/ and !duplicate_stack.empty? and duplicate_stack.last.name == m #For cases specifically to ie. <div></div> and have duplicates
 					t = tags_names[m]
 					tags_names[m] = duplicate_stack.pop
 					next t.parent.name #next m will be the parent tag with the same name
