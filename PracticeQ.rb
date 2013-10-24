@@ -248,5 +248,21 @@ class Calculator
   end
 end
 
-p Calculator.evaluate { multiply two times two }
-Calculator.crazy
+# p Calculator.evaluate { multiply two times two }
+# Calculator.crazy
+
+def outputUnique(str)
+    h = {}
+    
+    str.each_char do |x| 
+       unless h.key? x
+           h[x] = true 
+       else
+           h[x] = false
+       end
+    end   
+    
+    r = str.each_char { |x| break x if h[x] == true } 
+end
+
+p outputUnique "aabbbcddd"

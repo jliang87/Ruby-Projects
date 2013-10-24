@@ -24,7 +24,6 @@ class HTML
 
 		duplicate_stack = []
 
-		#QUESTION IN INTERVIEW
 		str.scan(/<\/?\w+\/?>/).inject do |m,o| #In all cases, m will be the parent, and o will be one of m's children
 			unless tags_names.key? m
 				t = Tag.new m
