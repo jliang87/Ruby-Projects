@@ -265,4 +265,53 @@ def outputUnique(str)
     r = str.each_char { |x| break x if h[x] == true } 
 end
 
-p outputUnique "aabbbcddd"
+# p outputUnique "aabbbcddd"
+
+def scope(name, scope_options = {})
+  p name
+  extension = Module.new(&Proc.new) if block_given?
+  p extension
+  p scope_options
+
+  scope_proc = lambda do |*args|
+    p args
+    options = scope_options.respond_to?(:call) ? scope_options.call(*args) : scope_options
+  end
+
+  scope_proc.("what the")
+
+  # singleton_class.send(:redefine_method, name, &scope_proc)
+end
+
+# scope :cool, lambda{ |x| puts x }
+
+class A
+ def fred
+   puts "In Fred"
+ end
+ def create_method(name, &block)
+   self.class.send(:define_method, name, &block)
+ end
+ define_method(:wilma) { puts "Charge it!" }
+end
+class B < A
+ define_method(:barney, instance_method(:fred))
+end
+# a = B.new
+# a.barney
+# a.wilma
+# try = Proc.new{ puts "good" }
+# a.create_method :cool, &try
+# a.create_method(:betty) { p self }
+# a.betty
+# a.cool
+
+#cool way!
+def aspects
+  a ||= lambda do
+    a = "sp"
+  end.call
+end
+
+# puts aspects
+
