@@ -315,3 +315,22 @@ end
 
 # puts aspects
 
+# b= Time.now
+# puts b
+# a = Time.now + 60
+# puts a
+
+a = [5,7,8,9]
+b = [7,3,5,8,10]
+# d = a + b
+# e = a.push b
+# p e
+
+# c = a << b
+
+# p c
+# p d
+
+c = a & b #only get the common ones in the two array
+d = a | b #combine the two array and then uniq
+
